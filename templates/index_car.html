@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Price Prediction - ML Project</title>
+    <style>
+        body{
+        background-color: #404040;
+        font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+        }
+        div.form{
+        box-shadow: 2px 2px 30px #1a1a1a;
+        width: 45vw;
+        background-color: #bfbfbf;
+        text-align: center;
+        border-left-color: #a6a6a6;
+        }
+        form{
+        border-left-style: solid;
+        border-color: #ffff00;
+        border-left-width: 5px;
+        padding: 15px;
+        }
+        input[type=text] {
+        border: None;
+        border-radius: 5px;
+        width: 200px;
+        height: 30px;
+        text-align: center;
+        }
+        h1 {
+        text-align: center;
+        color: white;
+        }
+        input[type=submit] {
+        border: None;
+        background-color: yellow;
+        border-radius: 5px;
+        width: 100px;
+        height: 35px;
+        }
+        input[type=submit]:hover {
+        box-shadow: 0px 2px 20px #666666;
+        cursor: pointer;
+        }
+        .select{
+        border: None;
+        width: 200px;
+        height: 30px;
+        border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Car Price Prediction - ML Project</h1>
+    <center>
+        <div class="form">
+            <form action="{{ url_for('predict') }}" method="post">
+                <br>
+                <input type="text" name="Year" placeholder="Year" required><br>
+                <h3>What is the Showroom Price?</h3>
+                <input type="text" name="Present_Price" placeholder="Present Price" required><br>
+                <h3>How many Kilometers driven?</h3>
+                <input type="text" name="Kms_Driven" placeholder="Kms Driven" required><br>
+                <h3>Who is the Owner?</h3>
+                <input type="text" name="Owner" placeholder="Owner" required><br>
+                <h3>What is the fuel type?</h3>
+                <select class="select" name="Fuel_Type_Petrol" required>
+                    <option value="Petrol">Petrol</option>
+                    <option value="Disel">Disel</option>
+                    <option value="CNG">CNG</option>
+                </select><br>
+                <h3>Who is the seller?</h3>
+                <select class="select" name="Seller_Type_Individual" required>
+                    <option value="Individual">Individual</option>
+                    <option value="Dealer">Dealer</option>
+                </select><br>
+                <h3>Transmission Type?</h3>
+                <select class="select" name="Transmission_Manual" required>
+                    <option value="Manual">Manual</option>
+                    <option value="Automatic">Automatic</option>
+                </select><br><br>
+                <input type="submit" value="Predict"><br><br>
+            </form>
+        </div>
+        <div>
+            <h1 style="color: white">{{ prediction_text }}</h1>
+        </div>
+    </center>
+
+</body>
+</html>
